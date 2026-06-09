@@ -48,11 +48,63 @@
       const role = document.getElementById('role').value;
       const message = document.getElementById('message');
 
-      if (!name || !phone || !email || !password || !role) {
-        message.className = 'error';
-        message.textContent = 'Please fill in all fields!';
-        return;
-      }
+// Check: Full Name
+  if (!name) {
+    message.className = 'error';
+    message.textContent = 'Full Name is required!';
+    return;
+  }
+  const nameRegex = /^[a-zA-Z\s]+$/;
+  if (!nameRegex.test(name)) {
+    message.className = 'error';
+    message.textContent = 'Full Name must contain letters only!';
+    return;
+  }
+
+  // Check: Phone
+  if (!phone) {
+    message.className = 'error';
+    message.textContent = 'Phone number is required!';
+    return;
+  }
+  const phoneRegex = /^[0-9\+\s\-]{7,15}$/;
+  if (!phoneRegex.test(phone)) {
+    message.className = 'error';
+    message.textContent = 'Phone must contain numbers only (7–15 digits)!';
+    return;
+  }
+
+  // Check: Email
+  if (!email) {
+    message.className = 'error';
+    message.textContent = 'Email address is required!';
+    return;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    message.className = 'error';
+    message.textContent = 'Please enter a valid email (e.g. john@email.com)!';
+    return;
+  }
+
+  // Check: Password
+  if (!password) {
+    message.className = 'error';
+    message.textContent = 'Password is required!';
+    return;
+  }
+  if (password.length < 6) {
+    message.className = 'error';
+    message.textContent = 'Password must be at least 6 characters!';
+    return;
+  }
+
+  // Check: Role
+  if (!role) {
+    message.className = 'error';
+    message.textContent = 'Please select a role (Owner or Coworker)!';
+    return;
+  }
 
       try {
         const response = await fetch('http://localhost:3000/register', {
