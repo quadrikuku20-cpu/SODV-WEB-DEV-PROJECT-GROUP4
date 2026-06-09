@@ -74,6 +74,38 @@ app.delete('/properties/:id', (req, res) => {
   properties.splice(index, 1);
   res.json({ message: 'Property deleted successfully' });
 });
+// EDIT PROPERTY
+app.put('/properties/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = properties.findIndex(p => p.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: 'Property not found' });
+  }
+  properties[index] = { ...properties[index], ...req.body };
+  res.json({ message: 'Property updated successfully', property: properties[index] });
+});
+
+// EDIT WORKSPACE
+app.put('/workspaces/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = workspaces.findIndex(w => w.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: 'Workspace not found' });
+  }
+  workspaces[index] = { ...workspaces[index], ...req.body };
+  res.json({ message: 'Workspace updated successfully', workspace: workspaces[index] });
+});
+
+// DELETE WORKSPACE
+app.delete('/workspaces/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = workspaces.findIndex(w => w.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: 'Workspace not found' });
+  }
+  workspaces.splice(index, 1);
+  res.json({ message: 'Workspace deleted successfully' });
+});
 
 // Start server
 app.listen(3000, () => {
