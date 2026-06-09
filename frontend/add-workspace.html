@@ -82,11 +82,57 @@
       const price = document.getElementById('price').value;
       const message = document.getElementById('message');
 
-      if (!type || !seats || !smoking || !availability || !term || !price) {
-        message.className = 'error';
-        message.textContent = 'Please fill in all fields!';
-        return;
-      }
+// Check: Type
+if (!type) {
+    message.className = 'error';
+    message.textContent = 'Please select a Workspace Type!';
+    return;
+}
+
+// Check: Seats
+if (!seats) {
+    message.className = 'error';
+    message.textContent = 'Seats / Capacity is required!';
+    return;
+}
+if (seats <= 0) {
+    message.className = 'error';
+    message.textContent = 'Seats must be a positive number!';
+    return;
+}
+
+// Check: Smoking
+if (!smoking) {
+    message.className = 'error';
+    message.textContent = 'Please select Smoking Allowed option!';
+    return;
+}
+
+// Check: Availability
+if (!availability) {
+    message.className = 'error';
+    message.textContent = 'Availability cannot be empty!';
+    return;
+}
+
+// Check: Term
+if (!term) {
+    message.className = 'error';
+    message.textContent = 'Please select a Term (Daily/Weekly/Monthly)!';
+    return;
+}
+
+// Check: Price
+if (!price) {
+    message.className = 'error';
+    message.textContent = 'Price is required!';
+    return;
+}
+if (price <= 0) {
+    message.className = 'error';
+    message.textContent = 'Price must be a positive number!';
+    return;
+}
 
       try {
         const response = await fetch('http://localhost:3000/workspaces', {
