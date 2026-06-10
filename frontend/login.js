@@ -15,10 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const roleError = document.getElementById('roleError');
 
     registrationForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Ngăn chặn form gửi đi mặc định
+        event.preventDefault(); // prevent the form send automatic
+
         let isValid = true;
 
-        // Reset lỗi
+        // Reset error
         nameError.textContent = '';
         phoneError.textContent = '';
         emailError.textContent = '';
@@ -28,39 +29,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Validate Name
         if (nameInput.value.trim() === '') {
-            nameError.textContent = 'Họ và tên không được để trống.';
+            nameError.textContent = 'Name must have no space';
             isValid = false;
         }
 
-        // Validate Phone (10 số)
+        // Validate Phone (10 numbers)
         const phoneRegex = /^[0-9]{10}$/;
         if (!phoneRegex.test(phoneInput.value.trim())) {
-            phoneError.textContent = 'Số điện thoại phải có 10 chữ số.';
+            phoneError.textContent = 'Phone must be 10 numbers';
             isValid = false;
         }
 
         // Validate Email
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         if (!emailRegex.test(emailInput.value.trim())) {
-            emailError.textContent = 'Email không hợp lệ.';
+            emailError.textContent = 'Email not valid';
             isValid = false;
         }
 
         // Validate Username
         if (usernameInput.value.trim() === '') {
-            usernameError.textContent = 'Tên đăng nhập không được để trống.';
+            usernameError.textContent = 'Username must have no space';
             isValid = false;
         }
 
         // Validate Password (ít nhất 6 ký tự)
         if (passwordInput.value.length < 6) {
-            passwordError.textContent = 'Mật khẩu phải có ít nhất 6 ký tự.';
+            passwordError.textContent = 'Password need minimum 6 digits.';
             isValid = false;
         }
 
         // Validate Role
         if (roleSelect.value === '') {
-            roleError.textContent = 'Vui lòng chọn vai trò.';
+            roleError.textContent = 'Choose your role';
             isValid = false;
         }
 
