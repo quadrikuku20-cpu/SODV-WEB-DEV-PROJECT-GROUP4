@@ -109,7 +109,7 @@
       try {
         const response = await fetch('https://sodv-web-dev-project-group4.onrender.com/register', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'authorization': localStorage.getItem('token') },
           body: JSON.stringify({ name, phone, email, password, role })
         });
         const data = await response.json();

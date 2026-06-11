@@ -96,7 +96,7 @@
       try {
         const response = await fetch(`https://sodv-web-dev-project-group4.onrender.com/properties/${propertyId}`, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'authorization': localStorage.getItem('token') },
           body: JSON.stringify({ address, neighborhood, sqft, garage, transport })
         });
         const data = await response.json();
