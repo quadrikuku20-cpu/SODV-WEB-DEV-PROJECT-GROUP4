@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "_id": "mqg6jiw21lkas97rhjb",
+      "name": "Test User",
+      "phone": "1234567890",
+      "email": "test@test.com",
+      "password": "$2b$10$iG7oWqIOqd3oxxaGbRRVkOgKVNltiaIg4BRTh3kCrkWE/iQAW1ujq",
+      "role": "owner"
+    }
+  ],
+  "properties": [],
+  "workspaces": []
+}
