@@ -49,7 +49,7 @@
 
     async function loadProperties() {
       try {
-        const response = await fetch(`http://localhost:3000/properties/${user.id}`);
+        const response = await fetch(`https://sodv-web-dev-project-group4.onrender.com/properties/${user.id}`);
         const properties = await response.json();
         const list = document.getElementById('properties-list');
 
@@ -64,6 +64,7 @@
             <p>${p.sqft} sqft · Garage: ${p.garage} · Public Transport: ${p.transport}</p>
             <div class="actions">
               <a href="add-workspace.html?propertyId=${p.id}" class="btn">+ Add Workspace</a>
+              <a href="edit-property.html?id=${p.id}" class="btn">Edit Property</a>
               <button class="btn btn-red" onclick="deleteProperty(${p.id})">Delete Property</button>
             </div>
           </div>
@@ -75,7 +76,7 @@
 
     async function deleteProperty(id) {
       if (!confirm('Are you sure you want to delete this property?')) return;
-      await fetch(`http://localhost:3000/properties/${id}`, { method: 'DELETE' });
+      await fetch(`https://sodv-web-dev-project-group4.onrender.com/properties/${id}`, { method: 'DELETE' });
       loadProperties();
     }
 
