@@ -174,7 +174,7 @@ app.get('/workspaces', async (req, res) => {
 
 	if(term !== undefined) results = results.filter(value => value.term === term);
 	if(price !== undefined && Number.parseFloat(price) !== NaN) results = results.filter(value => value.price === Number.parseFloat(price));
-	if(seats !== undefined && Number.parseInt(seats) !== NaN) results = results.filter(value => value.term === Number.parseInt(seats));
+	if(seats !== undefined && Number.parseInt(seats) !== NaN) results = results.filter(value => value.seats === Number.parseInt(seats));
 	if(smoking !== undefined) results = results.filter(value => value.smoking === smoking);
 
     res.json(results);
