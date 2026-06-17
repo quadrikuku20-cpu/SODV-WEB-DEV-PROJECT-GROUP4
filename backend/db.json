@@ -9,6 +9,66 @@
       "role": "owner"
     }
   ],
-  "properties": [],
-  "workspaces": []
+  "properties": [
+	  {
+		  "_id": "a",
+		  "ownerId": "mqg6jiw21lkas97rhjb",
+		  "address": "69 whatever st.",
+		  "neighborhood": "Downtown",
+		  "sqft": 12,
+		  "garage": "No",
+		  "transport": "No"
+	  },
+		{
+			"_id": "b",
+			"ownerId": "mqg6jiw21lkas97rhjb",
+			"address": "17 place ave.",
+			"neighborhood": "Not Downtown",
+			"sqft": 500,
+			"garage": "Yes",
+			"transport": "Yes"
+		}
+  ],
+  "workspaces": [
+	  {
+		  "_id": "w_a",
+		  "propertyId": "a",
+		  "type": "Open Desk",
+			"seats": 5,
+			"smoking": "Yes",
+			"availability": "Mon-Fri 9am-6pm",
+			"term": "Daily",
+			"price": 50
+	  },
+	  {
+		  "_id": "w_b",
+		  "propertyId": "a",
+		  "type": "Private Office",
+			"seats": 4,
+			"smoking": "No",
+			"availability": "Mon-Fri 9am-6pm",
+			"term": "Monthly",
+			"price": 5000
+	  },
+	  {
+		  "_id": "w_c",
+		  "propertyId": "b",
+		  "type": "Private Office",
+			"seats": 10,
+			"smoking": "No",
+			"availability": "Mon-Fri 9am-6pm",
+			"term": "Daily",
+			"price": 60
+	  },
+	  {
+		  "_id": "w_d",
+		  "propertyId": "b",
+		  "type": "Open Desk",
+			"seats": 8,
+			"smoking": "No",
+			"availability": "Mon-Fri 9am-7pm",
+			"term": "Weekly",
+			"price": 100
+	  }
+  ]
 }

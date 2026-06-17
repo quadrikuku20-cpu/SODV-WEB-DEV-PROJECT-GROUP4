@@ -158,7 +158,26 @@ app.post('/workspaces', authenticateToken, async (req, res) => {
 app.get('/workspaces', async (req, res) => {
   try {
     const db = readDB();
-    res.json(db.workspaces);
+	// console.log(req.query);
+	const { neighborhood, term, price, seats, smoking } = req.query;
+	let results = db.workspaces;
+
+	if(neighborhood !== undefined) {
+		db.properties.forEach(property => {
+			results = results.filter(value => {
+				if(value.propertyId !== property._id) return true;
+
+				return property.neighborhood === neighborhood;
+			});
+		});
+	}
+
+	if(term !== undefined) results = results.filter(value => value.term === term);
+	if(price !== undefined) results = results.filter(value => value.price === price);
+	if(seats !== undefined) results = results.filter(value => value.term === seats);
+	if(smoking !== undefined) results = results.filter(value => value.smoking === smoking);
+
+    res.json(results);
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
